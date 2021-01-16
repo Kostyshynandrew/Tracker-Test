@@ -18,7 +18,7 @@ export const TrackerItemInfo = ({ route }) => {
   const [trackedUserData, setTrackedUserData] = useAtom(TrackedUserData);
   const [userData] = useAtom(UsersData);
 
-  const getElements = (data: any) => {
+  const getElements = (data: any, firstCycle) => {
     const elements = [] as any;
     Object.entries(data).forEach((pair) => {
       if (typeof pair[1] === "object") {
@@ -27,7 +27,7 @@ export const TrackerItemInfo = ({ route }) => {
         elements.push(pair);
       }
     });
-    if (personalData) {
+    if (firstCycle && personalData) {
       Object.entries(personalData).forEach((pair) => {
         elements.push(pair);
       });
@@ -35,7 +35,7 @@ export const TrackerItemInfo = ({ route }) => {
     return elements;
   };
 
-  const renderData = useMemo(() => getElements(item), [item, personalData]);
+  const renderData = useMemo(() => getElements(item, true), [item, personalData]);
 
   if (!trackedUserData) return null;
 
