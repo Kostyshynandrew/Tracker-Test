@@ -9,17 +9,17 @@ export type NListOfTrackedItemsStackParamList = {
   };
 };
 
-export type NNotesNavigatorRouteProp<ScreenName extends keyof NListOfTrackedItemsStackParamList> = RouteProp<
+export type NListOfTrackedItemsNavigatorRouteProp<ScreenName extends keyof NListOfTrackedItemsStackParamList> = RouteProp<
   NListOfTrackedItemsStackParamList,
   ScreenName
 >;
 
-export type NNotesNavigatorNavigationProp<ScreenName extends keyof NListOfTrackedItemsStackParamList> = StackNavigationProp<
+export type NListOfTrackedItemsNavigatorNavigationProp<ScreenName extends keyof NListOfTrackedItemsStackParamList> = StackNavigationProp<
   NListOfTrackedItemsStackParamList,
   ScreenName
 >;
 
-export interface NNotesNavigatorScreenProps<ScreenName extends keyof NListOfTrackedItemsStackParamList> {
-  route: NNotesNavigatorRouteProp<ScreenName>;
-  navigation: NNotesNavigatorNavigationProp<ScreenName>;
+export interface NListOfTrackedItemsNavigatorScreenProps<ScreenName extends keyof NListOfTrackedItemsStackParamList> {
+  route: NListOfTrackedItemsNavigatorRouteProp<ScreenName>;
+  navigation: NListOfTrackedItemsNavigatorNavigationProp<ScreenName>;
 }

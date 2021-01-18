@@ -3,9 +3,9 @@ import { FlatList, Text } from "react-native";
 import { SafeAreaView } from "react-native-safe-area-context";
 import { IItem } from "../../components/Item/Item";
 import { getAsyncStorageData } from "../../helpers/helpers";
-import { NNotesNavigatorScreenProps } from "../../navigation";
+import { NListOfTrackedItemsNavigatorScreenProps } from "../../navigation";
 
-export const TrackerItemInfo: React.FC<NNotesNavigatorScreenProps<"TrackerItemInfo">> = ({ route }) => {
+export const TrackerItemInfo: React.FC<NListOfTrackedItemsNavigatorScreenProps<"TrackerItemInfo">> = ({ route }) => {
   const [personalData, setPersonalData] = useState<{ key: string; value: string }>();
 
   const { item } = route.params;
