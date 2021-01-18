@@ -67,6 +67,7 @@ const TimeTrackerItem: React.FC<ITimeTrackerItem> = ({ item, navigateToScreen })
             value={inputValue}
             onChangeText={(text) => setInputValue(text)}
             placeholder="Add Text"
+            placeholderTextColor="white" 
             style={{ backgroundColor: "grey", color: "white", marginVertical: 5 }}
           />
           <TextInput
@@ -74,6 +75,7 @@ const TimeTrackerItem: React.FC<ITimeTrackerItem> = ({ item, navigateToScreen })
             keyboardType={"numeric"}
             onChangeText={(hours) => setHours(hours)}
             placeholder="Add Hours"
+            placeholderTextColor="white" 
             style={{ backgroundColor: "grey", color: "white" }}
           />
           <TouchableOpacity
@@ -81,6 +83,7 @@ const TimeTrackerItem: React.FC<ITimeTrackerItem> = ({ item, navigateToScreen })
               saveInfoToLocalStorage({ text: inputValue, hours });
               setInputValue("");
               setHours("");
+              setIsOpened(false);
             }}
           >
             <Text>Save Data</Text>
