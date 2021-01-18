@@ -47,7 +47,6 @@ const TimeTrackerItem: React.FC<ITimeTrackerItem> = ({ item, navigateToScreen })
 
   const saveInfoToLocalStorage = useCallback(
     async (value) => {
-      console.log({ key: item.id.toString(), value });
       await setAsyncStorageData(item.id.toString(), value);
       // Update list of tracking items
       setUpdate(!update);
