@@ -11,9 +11,7 @@ export const Tracker = () => {
   useEffect(() => {
     fetch("https://jsonplaceholder.typicode.com/users")
       .then((response) => response.json())
-      .then((data: [IItem]) => {
-        setUserData(data);
-      })
+      .then((data: [IItem]) => setUserData(data))
       .catch((e) => console.log(e, 'error while fetching users'))
   }, []);
 
@@ -28,6 +26,7 @@ export const Tracker = () => {
           style={{ flex: 1, marginHorizontal: 15 }}
           data={userData}
           renderItem={({ item }) => <Item item={item} />}
+          keyExtractor={item => `${item.id}`}
         />
         <Text>Tracker</Text>
       </KeyboardAvoidingView>

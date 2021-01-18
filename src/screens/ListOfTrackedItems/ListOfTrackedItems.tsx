@@ -27,6 +27,7 @@ export const ListOfTrackedItems = () => {
         style={{ flex: 1 }}
         data={trackedData}
         renderItem={({ item }) => <Item item={item} navigateToScreen={() => navigate("TrackerItemInfo", { item })} />}
+        keyExtractor={item => `${item.id}`}
       />
       <Text>ListOfTrackedItems22</Text>
     </SafeAreaView>
