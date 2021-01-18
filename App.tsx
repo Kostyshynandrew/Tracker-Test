@@ -8,10 +8,12 @@ import { createBottomTabNavigator } from "@react-navigation/bottom-tabs";
 import { Tracker } from "./src/screens/Tracker/Tracker";
 import { ListOfTrackedItems } from "./src/screens/ListOfTrackedItems/ListOfTrackedItems";
 import { TrackerItemInfo } from "./src/screens/TrackerItemInfo/TrackerItemInfo";
+import { NListOfTrackedItemsStackParamList } from "./src/navigation";
 
 const AppTab = createBottomTabNavigator();
 
-const NotesStack = createStackNavigator();
+const NotesStack = createStackNavigator<NListOfTrackedItemsStackParamList>();
+
 
 const NotesStackNavigator = () => {
   return (

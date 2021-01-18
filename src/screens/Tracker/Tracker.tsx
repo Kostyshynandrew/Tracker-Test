@@ -1,9 +1,10 @@
-import React, { useEffect, useState } from "react";
+import React, { useEffect } from "react";
 import { useAtom } from "jotai";
-import { FlatList, View, Text, KeyboardAvoidingView } from "react-native";
+import { FlatList, Text, KeyboardAvoidingView } from "react-native";
 import { SafeAreaView } from "react-native-safe-area-context";
 import Item, { IItem } from "../../components/Item/Item";
 import { UsersData } from "../../jotai";
+import Spinner from "../../components/Spinner/Spinner";
 
 export const Tracker = () => {
   const [userData, setUserData] = useAtom(UsersData);
@@ -12,11 +13,13 @@ export const Tracker = () => {
       .then((response) => response.json())
       .then((data: [IItem]) => {
         setUserData(data);
-      });
-    // getAllAsyncStorageData().then(data2 => console.log('all async data here', {data2}))
+      })
+      .catch((e) => console.log(e, 'error while fetching users'))
   }, []);
-  console.log({ userData });
-  if (!userData) return null;
+
+  if (userData.length < 1) {
+    return <Spinner />;
+  }
 
   return (
     <SafeAreaView style={{ flex: 1 }}>

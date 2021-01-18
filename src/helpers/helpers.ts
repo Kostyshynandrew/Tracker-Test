@@ -31,12 +31,14 @@ export const getAllAsyncStorageData = async () => {
   try {
     const keys = await AsyncStorage.getAllKeys();
     const values = await AsyncStorage.multiGet(keys);
-    const parsedStore = {};
+    const parsedStore = {} as {[key: string]: string};
     values.forEach((item) => {
+      if(!item[1]) return;
       parsedStore[`${item[0]}`] = JSON.parse(item[1]);
     });
     return parsedStore;
   } catch (err) {
     console.log("Error while getting allAsyncData");
+    return {}
   }
 };

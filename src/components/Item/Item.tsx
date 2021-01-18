@@ -1,9 +1,8 @@
-import React, { useMemo, useCallback, memo, useEffect, useState, useRef } from "react";
-import { FlatList, View, Text, TextInput } from "react-native";
+import React, { useCallback, memo, useState } from "react";
+import { View, Text, TextInput } from "react-native";
 import isEqual from "react-fast-compare";
 import { TouchableOpacity } from "react-native-gesture-handler";
-import { SafeAreaView } from "react-native-safe-area-context";
-import { removeItemFromAsyncStorage, setAsyncStorageData } from "../../helpers/helpers";
+import { setAsyncStorageData } from "../../helpers/helpers";
 import { UpdateTrackedUserData } from "../../jotai";
 import { useAtom } from "jotai";
 
@@ -46,7 +45,7 @@ const TimeTrackerItem: React.FC<ITimeTrackerItem> = ({ item, navigateToScreen })
   const [inputValue, setInputValue] = useState<string>("");
   const [hours, setHours] = useState<string>("");
 
-  const onSaveInfo2 = useCallback(
+  const saveInfoToLocalStorage = useCallback(
     async (value) => {
       console.log({ key: item.id.toString(), value });
       await setAsyncStorageData(item.id.toString(), value);
@@ -79,7 +78,7 @@ const TimeTrackerItem: React.FC<ITimeTrackerItem> = ({ item, navigateToScreen })
           />
           <TouchableOpacity
             onPress={() => {
-              onSaveInfo2({ text: inputValue, hours });
+              saveInfoToLocalStorage({ text: inputValue, hours });
               setInputValue("");
               setHours("");
             }}
